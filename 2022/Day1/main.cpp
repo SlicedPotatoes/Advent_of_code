@@ -1,3 +1,8 @@
+/*
+Dans l'input, on retrouve des groupes de nombres séparés par des lignes vides.
+Pour la partie 1, le but est de trouver la somme du groupe ayant la valeur la plus élevée.
+Pour la partie 2, le but est de trouver la somme des 3 groupes ayant les valeurs les plus élevées.
+*/
 #include <iostream>
 #include <fstream>
 #include <string>
