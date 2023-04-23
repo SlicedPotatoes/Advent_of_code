@@ -13,7 +13,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 3: Rucksack Reorganization](https://adventofcode.com/2022/day/3)    | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day3/main.cpp) |
 | [Day 4: Camp Cleanup](https://adventofcode.com/2022/day/4)               | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day4/main.cpp) |
 | [Day 5: Supply Stacks](https://adventofcode.com/2022/day/5)              | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day5/main.cpp) |
-| [Day 6: Tuning Trouble](https://adventofcode.com/2022/day/6)             | :x: Not Completed            | [C++]()                                                                              |
+| [Day 6: Tuning Trouble](https://adventofcode.com/2022/day/6)             | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day6/main.cpp) |
 | [Day 7: No Space Left On Device](https://adventofcode.com/2022/day/7)    | :x: Not Completed            | [C++]()                                                                              |
 | [Day 8: Treetop Tree House](https://adventofcode.com/2022/day/8)         | :x: Not Completed            | [C++]()                                                                              |
 | [Day 9: Rope Bridge](https://adventofcode.com/2022/day/9)                | :x: Not Completed            | [C++]()                                                                              |
