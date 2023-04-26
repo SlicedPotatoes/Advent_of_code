@@ -10,6 +10,7 @@
     "ostream": "cpp",
     "iosfwd": "cpp",
     "cstdlib": "cpp",
-    "fstream": "cpp"
+    "fstream": "cpp",
+    "cmath": "cpp"
   }
 }
