@@ -109,7 +109,7 @@ int solverBFS(Node *start)
 
 int main()
 {
-  string filename = "D:\\Users\\Kevin\\Desktop\\Repo\\Advent_of_code\\2022\\Day12\\input.txt";
+  string filename = "input.txt";
   ifstream file(filename);
 
   if (!file.is_open())
