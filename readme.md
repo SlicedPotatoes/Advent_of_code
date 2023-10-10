@@ -20,7 +20,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 10: Cathode-Ray Tube](https://adventofcode.com/2022/day/10)         | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day10/main.cpp) |
 | [Day 11: Monkey in the Middle](https://adventofcode.com/2022/day/11)     | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day11/main.cpp) |
 | [Day 12: Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)  | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day12/main.cpp) |
-| [Day 13: Distress Signal](https://adventofcode.com/2022/day/13)          | :x: Not Completed            | [C++]()                                                                               |
+| [Day 13: Distress Signal](https://adventofcode.com/2022/day/13)          | :heavy_check_mark: Completed | [JS]((https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day13/main.js)  |
 | [Day 14: Regolith Reservoir](https://adventofcode.com/2022/day/14)       | :x: Not Completed            | [C++]()                                                                               |
 | [Day 15: Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | :x: Not Completed            | [C++]()                                                                               |
 | [Day 16: Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    | :x: Not Completed            | [C++]()                                                                               |
