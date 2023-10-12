@@ -166,7 +166,7 @@ int main()
   }
   checkMin(500, 0);
 
-  string filename = "D:\\Users\\Kevin\\Desktop\\Repo\\Advent_of_code\\2022\\Day14\\input.txt";
+  string filename = "input.txt";
   ifstream file(filename);
 
   if (!file.is_open())
