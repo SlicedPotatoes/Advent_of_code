@@ -22,7 +22,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 12: Hill Climbing Algorithm](https://adventofcode.com/2022/day/12)  | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day12/main.cpp) |
 | [Day 13: Distress Signal](https://adventofcode.com/2022/day/13)          | :heavy_check_mark: Completed | [JS](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day13/main.js)   |
 | [Day 14: Regolith Reservoir](https://adventofcode.com/2022/day/14)       | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day14/main.cpp) |
-| [Day 15: Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | :x: Not Completed            | [C++]()                                                                               |
+| [Day 15: Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day15/main.cpp) |
 | [Day 16: Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    | :x: Not Completed            | [C++]()                                                                               |
 | [Day 17: Pyroclastic Flow](https://adventofcode.com/2022/day/17)         | :x: Not Completed            | [C++]()                                                                               |
 | [Day 18: Boiling Boulders](https://adventofcode.com/2022/day/18)         | :x: Not Completed            | [C++]()                                                                               |
