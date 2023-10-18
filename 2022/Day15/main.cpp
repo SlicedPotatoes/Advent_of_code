@@ -154,7 +154,7 @@ long long part2(vector<Input> inputs)
 int main()
 {
   vector<Input> inputs;
-  string filename = "D:\\Users\\Kevin\\Desktop\\Repo\\Advent_of_code\\2022\\Day15\\input.txt";
+  string filename = "input.txt";
   ifstream file(filename);
 
   if (!file.is_open())
