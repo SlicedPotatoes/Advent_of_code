@@ -7,10 +7,10 @@
   Dans la partie 2, nous avons un éléphant qui nous assiste, mais il faut lui consacrer 4 minutes pour lui apprendre comment se déplacer dans ce réseau de valves et les ouvrir.
   L'objectif est toujours le même: trouver la pression maximale que l'on peut relâcher en partant de la valve AA en 30mn (- 4mn pour l'apprentissage) avec l'aide de l'éléphant.
 
-  Mon programme met du temps à s'exécuter, surtout dans la partie 2, il utilise un algorithme glouton (ou greedy): Beam width.
+  Mon programme utilise un algorithme glouton (ou greedy): Beam Search.
   L'idée que j'ai eue est de créer un arbre en commençant de AA à la minute 0.
   À chaque instant t, je tiens compte de toutes les actions possibles que je stocke dans des nœuds (Nodes).
-  Sans l'implémentation de la méthode "beam width", cette approche prendrait des jours pour s'exécuter.
+  Sans l'implémentation de la méthode "beam search", cette approche prendrait des jours pour s'exécuter.
   Cependant, grâce à une fonction heuristique, cela permet de supprimer les cas dits "irrattrapable".
 */
 #include <iostream>
@@ -26,9 +26,9 @@
 
 using namespace std;
 
-const int MAX_DEPTH_P1 = 30;  // Profondeur maximale d'exploration de l'arbre de solution pour P1.
-const int MAX_DEPTH_P2 = 26;  // Profondeur maximale d'exploration de l'arbre de solution pour P2.
-const int BEAM_WIDTH = 10000; // Taille du BeamWidth.
+const int MAX_DEPTH_P1 = 30; // Profondeur maximale d'exploration de l'arbre de solution pour P1.
+const int MAX_DEPTH_P2 = 26; // Profondeur maximale d'exploration de l'arbre de solution pour P2.
+const int BEAM_WIDTH = 1500; // Taille du BeamWidth.
 const double POID_HEURISTIQUE = 0.8;
 
 // Classe permettant de stocker les informations d'une valve.
@@ -51,7 +51,10 @@ public:
   }
 };
 
-vector<Valve> graphValves; // Vecteur permettant de stocker le graphe des valves.
+vector<Valve> graphValves;                 // Vecteur permettant de stocker le graphe des valves.
+unordered_map<string, int> nameIndexValve; // Map qui associe le nom d'une Valve à son indice.
+
+unordered_map<string, int> cacheDistance; // Cache de la fonction "distance" pour éviter de recalculer une valeur déjà obtenue précédemment.
 
 // Classe Node permettant de stocker un noeud de l'arbre de résolution.
 class Node
@@ -92,7 +95,7 @@ public:
   // Méthode qui ajoute la valve de la position actuelle à la liste "opened" et incrémente le score en fonction de la profondeur actuelle de la node.
   void openValve(bool isElephant)
   {
-    registre.push_back("Depth: " + to_string(depth) + " Open " + (isElephant ? "Elephant" : "") + ": " + (isElephant ? position2.name : position.name) + " score: " + to_string(score));
+    registre.push_back("Depth: " + to_string(depth) + " Open" + (isElephant ? " Elephant" : "") + ": " + (isElephant ? position2.name : position.name) + " score: " + to_string(score));
     score += (isElephant ? position2.flowRate : position.flowRate) * ((isP1 ? MAX_DEPTH_P1 : MAX_DEPTH_P2) - depth);
     opened.push_back((isElephant ? position2.name : position.name));
   }
@@ -179,8 +182,6 @@ vector<string> splitString(const string &input, const string &delimiter)
 
   return tokens;
 }
-
-unordered_map<string, int> nameIndexValve; // Map qui associe le nom d'une Valve à son indice.
 
 // Simulation des déplacements de l'éléphant
 vector<Node> elephantMove(Node n)
@@ -312,13 +313,13 @@ int simulate(bool isP1)
   {
     cout << maxNode.registre[i] << "\n";
   }
-  cout << "Depth: " << maxNode.depth << " End score: " << maxNode.score << " PotentialMaxScore: " << maxNode.heuristique << "\n";
+  cout << "Depth: " << maxNode.depth << " End score: " << maxNode.score << " Heuristique: " << maxNode.heuristique << "\n";
   return maxScore;
 }
 
 int main()
 {
-  string filename = "input.txt";
+  string filename = "D:\\Users\\Kevin\\Desktop\\Repo\\Advent_of_code\\2022\\Day16\\input.txt";
   ifstream file(filename);
 
   if (!file.is_open())
