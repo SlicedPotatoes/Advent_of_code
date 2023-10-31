@@ -1,35 +1,62 @@
+/*
+  L'objectif de cet exercice est de simuler la chute de rochers de différentes formes. Ces rochers sont soumis à des déplacements latéraux pendant leur chute qui est représenté par l'input.
+
+  Les différentes formes de rochers sont les suivantes :
+
+  ####    .#.      ..#      #      ##
+          ###      ..#      #      ##
+          .#.      ###      #
+                            #
+
+  Les rochers tombent dans l'ordre indiqué ci-dessus, et une fois la fin de la liste atteinte, le même ordre se répète. La simulation se déroule comme suit :
+
+  - Le rocher est initialisé à une hauteur de 3 unités au-dessus du premier obstacle (sol ou autres rochers) et à 2 unités du bord gauche.
+  - Le rocher est déplacé latéralement une fois en fonction de l'entrée (si la fin de la liste est atteinte, elle est répétée). Si le déplacement est impossible, on continue sans le compter.
+  - On descend d'une unité.
+  - On répète les deux opérations ci-dessus jusqu'à ce qu'un obstacle soit rencontré vers le bas.
+
+  Pour la partie 1, il faut simuler jusqu'au rocher 2022.
+  Pour la partie 2, il faut simuler jusqu'au rocher 10^12.
+
+  Dans les deux parties, la sortie attendue est la hauteur de la tour formée par la chute.
+
+  La difficulté de la partie 2 réside dans la nécessité d'exécuter un nombre extrêmement élevé de chutes de rochers.
+  L'idée que j'ai eue est de trouver des séquences répétitives et de les exploiter pour éviter de calculer de manière itérative la hauteur.
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include <array>
-
+#include <cmath>
+#include <map>
 #include <chrono>
 
 using namespace std;
 
-const int PART_1_LIMIT = 2022;
-const long long PART_2_LIMIT = 10LL * 1000 * 1000 * 1000 * 1000;
-const int RIGHT_PADDING = 2;
-const int BOTTOM_PADDING = 3;
-const int MAP_WIDTH = 7;
-const int SEQUENCE_SIZE = 5;
-array<bool, MAP_WIDTH> DEFAULT_LINE_MAP = {false, false, false, false, false, false, false};
+// Constantes pour les limites et les marges.
+const long long PART_1_LIMIT = 2022;          // Limite de la partie 1.
+const long long PART_2_LIMIT = 1000000000000; // Limite de la partie 2.
+const int LEFT_PADDING = 2;                   // Marge de gauche pour l'apparition d'une pièce.
+const int BOTTOM_PADDING = 3;                 // Marge inférieure pour l'apparition  d'une pièce.
+const int MAP_WIDTH = 7;                      // Largeur de la map.
+const int TOP_MAP_SIZE = 50;                  // Hauteur de la map depuis le haut prise en compte pour générer les clés de détection de séquence.
 
+array<bool, MAP_WIDTH> DEFAULT_LINE_MAP = {false, false, false, false, false, false, false}; // Ligne par défaut pour la map.
+
+// Structure de stockage d'un modèle de rocher.
 struct RockPattern
 {
-  vector<array<int, 2>> pattern;
-  int height;
-  int width;
-};
-struct Sequence
-{
-  vector<array<bool, MAP_WIDTH>> s;
-  int offset;
-  int startIndex;
+  vector<array<int, 2>> pattern; // Motif du rocher.
+  int height;                    // Hauteur du rocher.
+  int width;                     // Largeur du rocher.
 };
 
-string input = "";
+string input = ""; // Stockage de l'entrée depuis le fichier input.txt.
+
+// Liste des modèles de rochers.
 vector<RockPattern> rockPatterns = {
     {{{0, 0}, {0, 1}, {0, 2}, {0, 3}}, 1, 4},
     {{{0, 1}, {-1, 0}, {-1, 1}, {-1, 2}, {-2, 1}}, 3, 3},
@@ -37,249 +64,191 @@ vector<RockPattern> rockPatterns = {
     {{{0, 0}, {-1, 0}, {-2, 0}, {-3, 0}}, 4, 1},
     {{{0, 0}, {0, 1}, {-1, 0}, {-1, 1}}, 2, 2}};
 
-vector<array<bool, MAP_WIDTH>> map;
-long long maxHeightMap = 0;
-int gasIndex = 0;
+vector<array<bool, MAP_WIDTH>> _map;        // Carte de la simulation.
+long long maxHeightMap = 0;                 // Hauteur maximale actuelle de la carte.
+int gasIndex = 0;                           // Indice des déplacements latéraux.
+map<string, array<long long, 2>> sequences; // Map pour stocker les clés représentant l'état de la chute à un instant donné afin de détecter des séquences répétitives.
+long long rowProcessWithSequence = 0;       // Hauteur de la carte calculée à partir des séquences.
 
-Sequence sequencePart2 = {{}, -1, -1};
-
-void showMap()
-{
-  for (int i = map.size() - 1; i >= map.size() - 11; i--)
-  {
-    for (int j = 0; j < MAP_WIDTH; j++)
-    {
-      cout << (map[i][j] ? "#" : ".");
-    }
-    cout << "\n";
-  }
-}
-
+// Vérifie si le rocher peut être déplacé aux coordonnées (x, y) sans collision.
 bool canBeHere(int x, long long y, RockPattern rockPattern)
 {
   for (int i = 0; i < rockPattern.pattern.size(); i++)
   {
     int _y = y + rockPattern.pattern[i][0];
     int _x = x + rockPattern.pattern[i][1];
-    if (!(_x >= 0 && _x < MAP_WIDTH) || !(_y >= 0 && _y < map.size()) || map[_y][_x])
+    // Vérifie les limites de la carte et les collisions.
+    if (!(_x >= 0 && _x < MAP_WIDTH) || !(_y >= 0 && _y < _map.size()) || _map[_y][_x])
     {
       return false;
     }
   }
   return true;
 }
-
-bool isSameLine(array<bool, MAP_WIDTH> a, array<bool, MAP_WIDTH> b)
+// Simule les déplacements latéraux des rochers.
+int simulateGas(int x, int y, RockPattern rockPattern)
 {
-  for (int i = 0; i < MAP_WIDTH; i++)
+  int _x = x; // Copie temporaire de x.
+
+  // Applique le déplacement en fonction de l'indice.
+  switch (input[gasIndex])
   {
-    if (a[i] != b[i])
-    {
-      return false;
-    }
+  case '<':
+    _x--;
+    break;
+  case '>':
+    _x++;
+    break;
   }
-  return true;
+  // Si le déplacement est possible, met à jour x avec la copie temporaire.
+  if (canBeHere(_x, y, rockPattern))
+  {
+    x = _x;
+  }
+  gasIndex++; // Incrémente l'indice.
+  // Si l'indice atteint la fin de la liste, le ramène à 0.
+  if (gasIndex == input.size())
+  {
+    gasIndex = 0;
+  }
+  return x; // Retourne la nouvelle valeur de x.
 }
-
-bool startMapIsSequence()
+// Simule la chute d'un rocher.
+void simulateOneRock(long long i)
 {
-  int indexStartRock = map.size() - 1;
-  while (isSameLine(DEFAULT_LINE_MAP, map[indexStartRock]))
-  {
-    indexStartRock--;
-  }
-  for (int i = 0; i < sequencePart2.s.size(); i++)
-  {
-    for (int j = 0; j < MAP_WIDTH; j++)
-    {
-      cout << (sequencePart2.s[sequencePart2.s.size() - 1 - i][j] ? "#" : "*");
-    }
-    cout << "\n";
-    for (int j = 0; j < MAP_WIDTH; j++)
-    {
-      cout << (map[indexStartRock - i][j] ? "#" : "*");
-    }
-    cout << "\n\n";
-    if (!isSameLine(sequencePart2.s[sequencePart2.s.size() - 1 - i], map[indexStartRock - i]))
-    {
-      return false;
-    }
-  }
-  return true;
-}
-
-void simulateOneRock(int i)
-{
+  // Récupère le motif du rocher à traiter.
   RockPattern rockPattern = rockPatterns[i % rockPatterns.size()];
-  while (map.size() < maxHeightMap + BOTTOM_PADDING + rockPattern.height)
+
+  // Ajoute des lignes vides à la carte si nécessaire.
+  while (_map.size() < maxHeightMap + BOTTOM_PADDING + rockPattern.height)
   {
-    map.push_back(DEFAULT_LINE_MAP);
+    _map.push_back(DEFAULT_LINE_MAP);
   }
-  int x = RIGHT_PADDING;
+
+  // Initialise les coordonnées du rocher.
+  int x = LEFT_PADDING;
   long long y = maxHeightMap + BOTTOM_PADDING + rockPattern.height - 1;
 
-  bool gasPush = true;
-  bool end = false;
-
-  while (!end)
+  // Simule les déplacements latéraux et la chute jusqu'à rencontrer un obstacle vers le bas.
+  while (true)
   {
-    if (gasPush)
+    x = simulateGas(x, y, rockPattern);
+    if (!canBeHere(x, y - 1, rockPattern))
     {
-      int _x = x;
-      switch (input[gasIndex])
-      {
-      case '<':
-        _x--;
-        break;
-      case '>':
-        _x++;
-        break;
-      }
-      if (canBeHere(_x, y, rockPattern))
-      {
-        x = _x;
-      }
-      gasIndex++;
-      if (gasIndex == input.size())
-      {
-        gasIndex = 0;
-      }
+      break;
     }
-    else
-    {
-      if (!canBeHere(x, y - 1, rockPattern))
-      {
-        end = true;
-        break;
-      }
-      y--;
-    }
-    gasPush = !gasPush;
+    y--;
   }
+
+  // Met à jour la carte.
   for (int j = 0; j < rockPattern.pattern.size(); j++)
   {
     int _y = y + rockPattern.pattern[j][0];
     int _x = x + rockPattern.pattern[j][1];
-    map[_y][_x] = true;
+    _map[_y][_x] = true;
   }
+
+  // Met à jour la hauteur maximale actuelle.
   if (y + 1 > maxHeightMap)
   {
     maxHeightMap = y + 1;
   }
 }
-
-int simulateUntilFoundSequence()
+// Retourne une chaîne de caractères représentant la partie supérieure de la carte.
+string getTopMapString()
 {
-  int i = PART_1_LIMIT;
-  while (!startMapIsSequence())
+  // Si la carte est plus petite que la hauteur prise en compte, renvoie sa taille.
+  if (_map.size() <= TOP_MAP_SIZE)
   {
-    simulateOneRock(i);
-    i++;
+    return to_string(_map.size());
   }
-  return i - PART_1_LIMIT;
-}
 
-void simulateP1()
-{
-  for (int i = 0; i < PART_1_LIMIT; i++)
+  string s = "";
+  // Construit la chaîne de caractères à partir des lignes supérieures de la carte.
+  for (int i = _map.size() - 1; i >= _map.size() - TOP_MAP_SIZE; i--)
   {
-    simulateOneRock(i);
+    for (int j = 0; j < MAP_WIDTH; j++)
+    {
+      s += (_map[i][j] ? "#" : ".");
+    }
   }
+  return s;
 }
-
-/*
-  Les fonctions qui permettrons de detecté un pattern pour optimisé la partie 2
-*/
-
-int checkSequence(vector<array<bool, MAP_WIDTH>> sequence)
+// Calcule la hauteur d'une séquence et renvoie le nombre de rochers qu'elle comporte.
+long long processWithSequence(long long i, string keySequencePrec, long long nbConsecutiveCalls)
 {
-  bool foundSequence = false;    // True si la sequence a été trouvé dans la map
-  bool endCountSequence = false; // True si on a retrouvé la meme sequence une 2eme
-  int countSequence = 0;         // Compte la différence de ligne entre la premiere fois que l'on a trouvé la sequence et la seconde fois
-  int tempCountSequence = 0;     // Compteur temporaire pour les autres fois que l'on trouve la sequence pour vérifier que l'ecart est le meme.
+  /*
+    Récupère les informations de l'état de la carte déjà rencontré.
+    - index 0 = MaxHeight
+    - index 1 = i
+  */
+  array<long long, 2> dataTargetSequence = sequences[keySequencePrec];
 
-  // Parcours de la map
-  for (int i = 0; i < map.size(); i++)
+  // Le nombre de rochers dans cette séquence est la différence entre le nombre actuel de rochers et le nombre de rochers en bas de la séquence.
+  long long nbRockSequence = i - dataTargetSequence[1];
+
+  // Si l'ajout de cette séquence dépasse les limites de la partie 1 ou 2, on la saute.
+  if ((i < PART_1_LIMIT && i + nbRockSequence >= PART_1_LIMIT) || (i >= PART_1_LIMIT && i + nbRockSequence >= PART_2_LIMIT))
   {
-    // Si la sequence a été trouvé mais que l'on a pas trouvé la seconde, on incrémente le compteur.
-    if (foundSequence && !endCountSequence)
+    return 0;
+  }
+
+  // La hauteur de cette séquence est la différence entre la hauteur actuelle de la carte et la hauteur de la carte lors de l'état précédent, multipliée par 2^nbConsecutiveCalls.
+  long long nbRowSequence = (maxHeightMap - dataTargetSequence[0]) * pow(2, nbConsecutiveCalls);
+  // Incrémente la hauteur calculée grâce à la séquence.
+  rowProcessWithSequence += nbRowSequence;
+
+  // Retourne le nombre de rochers dans cette séquence.
+  return nbRockSequence;
+}
+// Affiche le résultat de la simulation.
+void showResult(string title, chrono::_V2::system_clock::time_point _start)
+{
+  auto stop = chrono::high_resolution_clock::now();
+  auto time = chrono::duration_cast<chrono::microseconds>(stop - _start);
+  cout << "MaxHeightMap: " << maxHeightMap << "\n";
+  cout << "RowProcessWithSequence: " << rowProcessWithSequence << "\n";
+  cout << title << maxHeightMap + rowProcessWithSequence << "\n";
+  cout << "Temps d'exécution : " << time.count() << " μs\n";
+  cout << "\n";
+}
+// Simule et détecte les séquences.
+void simulate(int start, long long end)
+{
+  auto _start = chrono::high_resolution_clock::now();
+  for (long long i = start; i < end; i++)
+  {
+    // Simule la chute d'un rocher.
+    simulateOneRock(i);
+
+    // Crée une clé représentant l'état actuel.
+    string key = getTopMapString() + ':' + to_string(i % rockPatterns.size()) + ':' + to_string(gasIndex);
+
+    // Si cet état a déjà été rencontré précédemment.
+    if (sequences.find(key) != sequences.end())
     {
-      countSequence++;
-    }
-    // Si on a trouvé la seconde séquence, on incrémente le compteur temporaire
-    else if (endCountSequence)
-    {
-      tempCountSequence++;
-    }
-    // Si la ligne de la carte est = a la premiere ligne de la sequence
-    if (isSameLine(map[i], sequence[0]))
-    {
-      // On verifie si la sutie correspond
-      bool valid = true;
-      for (int j = 1; j < sequence.size(); j++)
+      long long nbConsecutiveCalls = 0;
+      while (true)
       {
-        if (!isSameLine(map[i - j], sequence[j]))
+        // Calcule la hauteur et le nombre de rochers de la séquence détectée.
+        long long nbRock = processWithSequence(i, key, nbConsecutiveCalls);
+
+        i += nbRock; // Incrémente l'indice en sautant la séquence.
+        if (nbRock == 0)
         {
-          valid = false;
           break;
         }
+        nbConsecutiveCalls++;
       }
-      // Si notre sequence est valid et que l'on ne l'avais deja pas trouvé, on met la valeur de foundSequence sur true
-      if (!foundSequence && valid)
-      {
-        foundSequence = true;
-      }
-      // Si c'est la 2eme fois que l'on trouve la sequence, on met endCountSequence sur true
-      else if (foundSequence && !endCountSequence && valid)
-      {
-        endCountSequence = true;
-      }
-      // Si on a retrouvé la sequence et que c'est ni la premiere ni la seconde fois
-      else if (valid && endCountSequence)
-      {
-        // On vérifie si l'eccart est le meme que ce que l'on avais calculé entre la premiere et la seconde
-        if (countSequence == tempCountSequence)
-        {
-          tempCountSequence = 0;
-        }
-        // Si ce n'est pas le cas on retourne -1
-        else
-        {
-          return -1;
-        }
-      }
+      sequences.clear(); // Réinitialise la liste des séquences après les avoir traitées.
     }
-  }
-  // Si notre sequence n'a pas été trouvé on retourne -1
-  if (!foundSequence)
-  {
-    return -1;
-  }
-  // Si la 2eme sequence n'a pas été trouvé on retourne -1
-  if (!endCountSequence)
-  {
-    return -1;
-  }
-  // Sinon on retourne l'espacement entre les sequences.
-  return countSequence;
-}
-
-Sequence findSequence()
-{
-  for (int i = 0; i < map.size(); i++)
-  {
-    vector<array<bool, MAP_WIDTH>> tempSequence;
-    for (int j = 0; j < SEQUENCE_SIZE; j++)
+    sequences[key] = {maxHeightMap, i}; // Stocke l'état actuel avec sa hauteur maximale dans les séquences.
+    if (i == PART_1_LIMIT - 1)
     {
-      tempSequence.push_back(map[i + j]);
-    }
-    int s = checkSequence(tempSequence);
-    if (s != -1)
-    {
-      return {tempSequence, s, i};
+      showResult("Part1: ", _start); // Affiche le résultat de la partie 1 si l'indice atteint la limite de la partie 1.
     }
   }
-  return {{}, -1, -1};
+  showResult("Part2: ", _start); // Affiche le résultat de la partie 2 à la fin de la simulation.
 }
 
 main()
@@ -299,37 +268,7 @@ main()
   }
   file.close();
 
-  auto start = chrono::high_resolution_clock::now();
-  simulateP1();
-  auto stop = chrono::high_resolution_clock::now();
-  auto timeP1 = chrono::duration_cast<chrono::microseconds>(stop - start);
-  cout << "Part1: " << maxHeightMap << "\n";
-  cout << "Temps d'exécution : " << timeP1.count() << " μs\n";
-
-  start = chrono::high_resolution_clock::now();
-
-  sequencePart2 = findSequence();
-
-  stop = chrono::high_resolution_clock::now();
-  auto timeFindSequence = chrono::duration_cast<chrono::microseconds>(stop - start);
-  cout << "sequencePart2 Temps d'exécution : " << timeFindSequence.count() << " μs\n";
-
-  int t = simulateUntilFoundSequence();
-  cout << t << "\n";
-
-  string filename2 = "D:\\Users\\Kevin\\Desktop\\Repo\\Advent_of_code\\2022\\Day17\\output.txt";
-  ofstream fichier(filename2);
-  if (fichier.is_open())
-  {
-    for (int i = map.size() - 1; i >= 0; i--)
-    {
-      for (int j = 0; j < MAP_WIDTH; j++)
-      {
-        fichier << (map[i][j] ? "#" : ".");
-      }
-      fichier << "\n";
-    }
-  }
+  simulate(0, PART_2_LIMIT);
 
   return 0;
 }
