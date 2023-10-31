@@ -24,7 +24,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 14: Regolith Reservoir](https://adventofcode.com/2022/day/14)       | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day14/main.cpp) |
 | [Day 15: Beacon Exclusion Zone](https://adventofcode.com/2022/day/15)    | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day15/main.cpp) |
 | [Day 16: Proboscidea Volcanium](https://adventofcode.com/2022/day/16)    | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day16/main.cpp) |
-| [Day 17: Pyroclastic Flow](https://adventofcode.com/2022/day/17)         | :x: Not Completed            | [C++]()                                                                               |
+| [Day 17: Pyroclastic Flow](https://adventofcode.com/2022/day/17)         | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2022/Day17/main.cpp) |
 | [Day 18: Boiling Boulders](https://adventofcode.com/2022/day/18)         | :x: Not Completed            | [C++]()                                                                               |
 | [Day 19: Not Enough Minerals](https://adventofcode.com/2022/day/19)      | :x: Not Completed            | [C++]()                                                                               |
 | [Day 20: Grove Positioning System](https://adventofcode.com/2022/day/20) | :x: Not Completed            | [C++]()                                                                               |
