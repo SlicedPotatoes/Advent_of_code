@@ -4,6 +4,12 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 
 ## Completed Puzzles
 
+### 2023
+
+| Puzzle                                                     | Status                       | Languages                                                                             |
+| ---------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------- |
+| [Day 1: Trebuchet?! ](https://adventofcode.com/2023/day/1) | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day01/main.cpp) |
+
 ### 2022
 
 | Puzzle                                                                   | Status                       | Languages                                                                                                                                                                        |
