@@ -6,9 +6,10 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 
 ### 2023
 
-| Puzzle                                                     | Status                       | Languages                                                                             |
-| ---------------------------------------------------------- | ---------------------------- | ------------------------------------------------------------------------------------- |
-| [Day 1: Trebuchet?! ](https://adventofcode.com/2023/day/1) | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day01/main.cpp) |
+| Puzzle                                                       | Status                       | Languages                                                                             |
+| ------------------------------------------------------------ | ---------------------------- | ------------------------------------------------------------------------------------- |
+| [Day 1: Trebuchet?!](https://adventofcode.com/2023/day/1)    | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day01/main.cpp) |
+| [Day 2: Cube Conundrum](https://adventofcode.com/2023/day/2) | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day02/main.cpp) |
 
 ### 2022
 
