@@ -48,7 +48,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 2: I Was Told There Would Be No Math](https://adventofcode.com/2015/day/2)      | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day02/main.cpp) |
 | [Day 3: Perfectly Spherical Houses in a Vacuum](https://adventofcode.com/2015/day/3) | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day03/main.cpp) |
 | [Day 4: The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4)             | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day04/main.cpp) |
-| [Day 5: Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | :x: Not Completed            | [C++]()                                                                               |
+| [Day 5: Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day05/main.cpp) |
 | [Day 6: Probably a Fire Hazard](https://adventofcode.com/2015/day/6)                 | :x: Not Completed            | [C++]()                                                                               |
 | [Day 7: Some Assembly Required](https://adventofcode.com/2015/day/7)                 | :x: Not Completed            | [C++]()                                                                               |
 | [Day 8: Matchsticks](https://adventofcode.com/2015/day/8)                            | :x: Not Completed            | [C++]()                                                                               |
