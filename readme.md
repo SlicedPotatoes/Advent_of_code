@@ -51,7 +51,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 4: The Ideal Stocking Stuffer](https://adventofcode.com/2015/day/4)             | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day04/main.cpp) |
 | [Day 5: Doesn't He Have Intern-Elves For This?](https://adventofcode.com/2015/day/5) | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day05/main.cpp) |
 | [Day 6: Probably a Fire Hazard](https://adventofcode.com/2015/day/6)                 | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day06/main.cpp) |
-| [Day 7: Some Assembly Required](https://adventofcode.com/2015/day/7)                 | :x: Not Completed            | [C++]()                                                                               |
+| [Day 7: Some Assembly Required](https://adventofcode.com/2015/day/7)                 | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day07/main.cpp) |
 | [Day 8: Matchsticks](https://adventofcode.com/2015/day/8)                            | :x: Not Completed            | [C++]()                                                                               |
 | [Day 9: All in a Single Night](https://adventofcode.com/2015/day/9)                  | :x: Not Completed            | [C++]()                                                                               |
 | [Day 10: Elves Look, Elves Say](https://adventofcode.com/2015/day/10)                | :x: Not Completed            | [C++]()                                                                               |
