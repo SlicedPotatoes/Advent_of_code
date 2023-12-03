@@ -20,7 +20,7 @@
 #include <string>
 #include <vector>
 
-#include <D:\Users\Kevin\Desktop\Repo\Advent_of_code\Utils\MeasureExecutionTime.cpp>
+#include <MeasureExecutionTime.cpp>
 
 using namespace std;
 
