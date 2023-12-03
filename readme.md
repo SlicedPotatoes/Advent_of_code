@@ -55,7 +55,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 7: Some Assembly Required](https://adventofcode.com/2015/day/7)                 | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day07/main.cpp) |
 | [Day 8: Matchsticks](https://adventofcode.com/2015/day/8)                            | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day08/main.cpp) |
 | [Day 9: All in a Single Night](https://adventofcode.com/2015/day/9)                  | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day09/main.cpp) |
-| [Day 10: Elves Look, Elves Say](https://adventofcode.com/2015/day/10)                | :x: Not Completed            | [C++]()                                                                               |
+| [Day 10: Elves Look, Elves Say](https://adventofcode.com/2015/day/10)                | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day10/main.cpp) |
 | [Day 11: Corporate Policy](https://adventofcode.com/2015/day/11)                     | :x: Not Completed            | [C++]()                                                                               |
 | [Day 12: JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                 | :x: Not Completed            | [C++]()                                                                               |
 | [Day 13: Knights of the Dinner Table](https://adventofcode.com/2015/day/13)          | :x: Not Completed            | [C++]()                                                                               |
