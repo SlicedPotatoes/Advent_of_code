@@ -11,7 +11,7 @@
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe",
         "-I",
-        "${workspaceFolder}\\Utils"
+        "${workspaceFolder}"
       ],
       "options": {
         "cwd": "D:\\msys64\\mingw64\\bin"
