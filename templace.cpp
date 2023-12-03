@@ -1,24 +1,36 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <string>
+
+#include <MeasureExecutionTime.cpp>
 
 using namespace std;
 
+int parseInput()
+{
+    MEASURE_FUNCTION_EXECUTION_TIME
+    string filename = "input.txt";
+    ifstream file(filename);
+
+    if (!file.is_open())
+    {
+        cerr << "Erreur : impossible d'ouvrir le fichier " << filename;
+        return 1;
+    }
+    string line;
+    while (getline(file, line))
+    {
+    }
+    file.close();
+    return 0;
+}
+
 int main()
 {
-  string filename = "input.txt";
-  ifstream file(filename);
+    if (parseInput() == 1)
+    {
+        return 1;
+    }
 
-  if (!file.is_open())
-  {
-    cerr << "Erreur : impossible d'ouvrir le fichier " << filename;
-    return 1;
-  }
-  string line;
-  while (getline(file, line))
-  {
-  }
-  file.close();
-
-  return 0;
+    return 0;
 }
