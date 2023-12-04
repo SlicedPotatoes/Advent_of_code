@@ -58,7 +58,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 10: Elves Look, Elves Say](https://adventofcode.com/2015/day/10)                | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day10/main.cpp) |
 | [Day 11: Corporate Policy](https://adventofcode.com/2015/day/11)                     | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day11/main.cpp) |
 | [Day 12: JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                 | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day12/main.cpp) |
-| [Day 13: Knights of the Dinner Table](https://adventofcode.com/2015/day/13)          | :x: Not Completed            | [C++]()                                                                               |
+| [Day 13: Knights of the Dinner Table](https://adventofcode.com/2015/day/13)          | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day13/main.cpp) |
 | [Day 14: Reindeer Olympics](https://adventofcode.com/2015/day/14)                    | :x: Not Completed            | [C++]()                                                                               |
 | [Day 15: Science for Hungry People](https://adventofcode.com/2015/day/15)            | :x: Not Completed            | [C++]()                                                                               |
 | [Day 16: Aunt Sue](https://adventofcode.com/2015/day/16)                             | :x: Not Completed            | [C++]()                                                                               |
