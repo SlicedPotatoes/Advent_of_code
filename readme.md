@@ -13,6 +13,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 3: Gear Ratios](https://adventofcode.com/2023/day/3)                     | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day03/main.cpp) |
 | [Day 4: Scratchcards](https://adventofcode.com/2023/day/4)                    | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day04/main.cpp) |
 | [Day 5: If You Give A Seed A Fertilizer](https://adventofcode.com/2023/day/5) | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day05/main.cpp) |
+| [Day 6: Wait For It](https://adventofcode.com/2023/day/6)                     | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day06/main.cpp) |
 
 ### 2022
 
