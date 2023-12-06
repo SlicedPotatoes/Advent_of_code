@@ -37,11 +37,9 @@
 
 #include <algorithm>
 #include <array>
-#include <cmath>
 #include <fstream>
 #include <iostream>
 #include <string>
-#include <unordered_map>
 
 #include <Utils/MeasureExecutionTime.cpp>
 #include <Utils/SplitString.cpp>
