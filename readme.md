@@ -63,7 +63,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 12: JSAbacusFramework.io](https://adventofcode.com/2015/day/12)                 | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day12/main.cpp) |
 | [Day 13: Knights of the Dinner Table](https://adventofcode.com/2015/day/13)          | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day13/main.cpp) |
 | [Day 14: Reindeer Olympics](https://adventofcode.com/2015/day/14)                    | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day14/main.cpp) |
-| [Day 15: Science for Hungry People](https://adventofcode.com/2015/day/15)            | :x: Not Completed            | [C++]()                                                                               |
+| [Day 15: Science for Hungry People](https://adventofcode.com/2015/day/15)            | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day15/main.cpp) |
 | [Day 16: Aunt Sue](https://adventofcode.com/2015/day/16)                             | :x: Not Completed            | [C++]()                                                                               |
 | [Day 17: No Such Thing as Too Much](https://adventofcode.com/2015/day/17)            | :x: Not Completed            | [C++]()                                                                               |
 | [Day 18: Like a GIF For Your Yard](https://adventofcode.com/2015/day/18)             | :x: Not Completed            | [C++]()                                                                               |
