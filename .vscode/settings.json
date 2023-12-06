@@ -60,7 +60,12 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "cinttypes": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "any": "cpp",
+    "codecvt": "cpp",
+    "cstring": "cpp",
+    "forward_list": "cpp",
+    "ranges": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
