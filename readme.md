@@ -16,6 +16,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 6: Wait For It](https://adventofcode.com/2023/day/6)                     | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day06/main.cpp) |
 | [Day 7: Camel Cards](https://adventofcode.com/2023/day/7)                     | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day07/main.cpp) |
 | [Day 8: Haunted Wasteland](https://adventofcode.com/2023/day/8)               | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day08/main.cpp) |
+| [Day 9: Mirage Maintenance](https://adventofcode.com/2023/day/9)              | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day09/main.cpp) |
 
 ### 2022
 
