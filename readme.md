@@ -73,7 +73,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 17: No Such Thing as Too Much](https://adventofcode.com/2015/day/17)            | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day17/main.cpp) |
 | [Day 18: Like a GIF For Your Yard](https://adventofcode.com/2015/day/18)             | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day18/main.cpp) |
 | [Day 19: Medicine for Rudolph](https://adventofcode.com/2015/day/19)                 | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day19/main.cpp) |
-| [Day 20: Infinite Elves and Infinite Houses](https://adventofcode.com/2015/day/20)   | :x: Not Completed            | [C++]()                                                                               |
+| [Day 20: Infinite Elves and Infinite Houses](https://adventofcode.com/2015/day/20)   | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2015/Day20/main.cpp) |
 | [Day 21: RPG Simulator 20XX](https://adventofcode.com/2015/day/21)                   | :x: Not Completed            | [C++]()                                                                               |
 | [Day 22: Wizard Simulator 20XX](https://adventofcode.com/2015/day/22)                | :x: Not Completed            | [C++]()                                                                               |
 | [Day 23: Opening the Turing Lock](https://adventofcode.com/2015/day/23)              | :x: Not Completed            | [C++]()                                                                               |
