@@ -20,6 +20,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 10: Pipe Maze](https://adventofcode.com/2023/day/10)                     | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day10/main.cpp) |
 | [Day 11: Cosmic Expansion](https://adventofcode.com/2023/day/11)              | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day11/main.cpp) |
 | [Day 12: Hot Springs](https://adventofcode.com/2023/day/12)                   | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day12/main.cpp) |
+| [Day 13: Point of Incidence](https://adventofcode.com/2023/day/13)            | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day13/main.cpp) |
 
 ### 2022
 
