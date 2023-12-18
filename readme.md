@@ -22,6 +22,7 @@ All the exercices I solved on [Advent of code](https://adventofcode.com/)
 | [Day 12: Hot Springs](https://adventofcode.com/2023/day/12)                   | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day12/main.cpp) |
 | [Day 13: Point of Incidence](https://adventofcode.com/2023/day/13)            | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day13/main.cpp) |
 | [Day 14: Parabolic Reflector Dish](https://adventofcode.com/2023/day/14)      | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day14/main.cpp) |
+| [Day 15: Lens Library](https://adventofcode.com/2023/day/15)                  | :heavy_check_mark: Completed | [C++](https://github.com/SlicedPotatoes/Advent_of_code/blob/main/2023/Day15/main.cpp) |
 
 ### 2022
 
